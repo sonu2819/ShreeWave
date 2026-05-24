@@ -146,15 +146,15 @@ export default function VideoPlayer({ roomId }) {
       {/* INPUT */}
       <input
         value={input}
+         className="video-input"
         onChange={(e) => setInput(e.target.value)}
         placeholder="Paste YouTube URL"
         style={{ width: "100%", padding: 10 }}
       />
 
-      <button onClick={loadVideo} style={{ width: "100%", marginTop: 10 }}>
-        Load Video
-      </button>
-
+    <button className="load-btn" onClick={loadVideo}>
+  Load Video
+</button>
       {/* PLAYER */}
       {video?.videoId ? (
         <ReactPlayer

@@ -10,315 +10,6 @@ body {
 }
 
 /* =========================================
-   MAIN PAGE
-========================================= */
-
-.room-page {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* =========================================
-   TOP BAR
-========================================= */
-
-.top-bar {
-  width: 100%;
-  padding: 15px;
-  box-sizing: border-box;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-
-  background: #111827;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-/* url input */
-
-.top-bar input {
-  width: 60%;
-  max-width: 700px;
-
-  background: #1f2937;
-  color: white;
-
-  border: none;
-  outline: none;
-
-  padding: 12px;
-  border-radius: 10px;
-
-  font-size: 14px;
-}
-
-/* buttons */
-
-button {
-  border: none;
-  background: #ff4d2e;
-  color: white;
-
-  padding: 10px 16px;
-  border-radius: 10px;
-
-  cursor: pointer;
-  font-weight: bold;
-
-  transition: 0.2s;
-}
-
-button:hover {
-  background: #e63e22;
-  transform: scale(1.05);
-}
-
-/* =========================================
-   VIDEO SECTION
-========================================= */
-
-.video-section {
-  width: 100%;
-
-  display: flex;
-  justify-content: center;
-
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-/* cinematic player box */
-
-.video-box {
-  width: 95%;
-  max-width: 1400px;
-
-  background: #111827;
-
-  padding: 18px;
-  border-radius: 18px;
-
-  box-shadow:
-    0 0 20px rgba(0,0,0,0.5),
-    0 0 80px rgba(0,0,0,0.2);
-}
-
-/* react player */
-
-.video-box iframe,
-.video-box video {
-  width: 100%;
-  height: 72vh;
-
-  border-radius: 14px;
-}
-
-/* =========================================
-   LIVE CHAT CONSOLE
-========================================= */
-/* =========================================
-   CHAT WRAPPER
-========================================= */
-
-.chat-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin: 30px 0;
-}
-
-/* =========================================
-   MAIN CHAT BOX
-========================================= */
-
-.chat-box {
-  width: 100%;
-  max-width: 520px;
-
-  background: #111827;
-
-  border-radius: 20px;
-
-  overflow: hidden;
-
-  display: flex;
-  flex-direction: column;
-
-  box-shadow:
-    0 0 20px rgba(0,0,0,0.5),
-    0 0 60px rgba(0,0,0,0.2);
-}
-
-/* =========================================
-   HEADER
-========================================= */
-
-.chat-header {
-  background: linear-gradient(
-    90deg,
-    #ff4d2e,
-    #ff7a18
-  );
-
-  padding: 16px;
-
-  text-align: center;
-
-  font-weight: bold;
-
-  letter-spacing: 2px;
-
-  font-size: 15px;
-}
-
-/* =========================================
-   MESSAGES AREA
-========================================= */
-
-.chat-messages {
-  height: 320px;
-
-  overflow-y: auto;
-
-  padding: 15px;
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 10px;
-
-  background: #0f172a;
-}
-
-/* scrollbar */
-
-.chat-messages::-webkit-scrollbar {
-  width: 6px;
-}
-
-.chat-messages::-webkit-scrollbar-thumb {
-  background: #ff4d2e;
-  border-radius: 20px;
-}
-
-/* =========================================
-   MESSAGE BUBBLE
-========================================= */
-
-.chat-message {
-  background: #1f2937;
-
-  padding: 10px 14px;
-
-  border-radius: 12px;
-
-  color: white;
-
-  line-height: 1.4;
-
-  word-break: break-word;
-
-  border-left: 3px solid #ff4d2e;
-}
-
-/* username */
-
-.chat-message b {
-  color: #ff7a18;
-}
-
-/* =========================================
-   INPUT AREA
-========================================= */
-
-.chat-box form {
-  display: flex;
-
-  gap: 10px;
-
-  padding: 14px;
-
-  background: #111827;
-}
-
-/* input */
-
-.chat-box form input {
-  flex: 1;
-
-  background: #1f2937;
-
-  border: none;
-  outline: none;
-
-  color: white;
-
-  padding: 12px;
-
-  border-radius: 12px;
-
-  font-size: 14px;
-}
-
-/* button */
-
-.chat-box form button {
-  border: none;
-
-  background: linear-gradient(
-    90deg,
-    #ff4d2e,
-    #ff7a18
-  );
-
-  color: white;
-
-  padding: 12px 18px;
-
-  border-radius: 12px;
-
-  cursor: pointer;
-
-  font-weight: bold;
-
-  transition: 0.2s;
-}
-
-.chat-box form button:hover {
-  transform: scale(1.05);
-}
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 900px) {
-
-  .top-bar {
-    flex-direction: column;
-  }
-
-  .top-bar input {
-    width: 100%;
-  }
-
-  .video-box iframe,
-  .video-box video {
-    height: 40vh;
-  }
-
-  .chat-box {
-    max-width: 100%;
-  }
-
-}
-
-
-
-/* =========================================
    HOME PAGE
 ========================================= */
 
@@ -331,51 +22,28 @@ button:hover {
   align-items: center;
 
   position: relative;
-
   overflow: hidden;
 
-  background:
-    radial-gradient(circle at top,
-    #111827 0%,
-    #020617 60%);
+  background: radial-gradient(circle at top, #111827 0%, #020617 60%);
 }
 
 /* glowing background */
 
 .hero-glow {
   position: absolute;
-
   width: 700px;
   height: 700px;
-
   background: rgba(255, 77, 46, 0.12);
-
   border-radius: 50%;
-
   filter: blur(120px);
-
   top: -200px;
-
   animation: pulseGlow 5s infinite ease-in-out;
 }
 
 @keyframes pulseGlow {
-
-  0% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-
-  50% {
-    transform: scale(1.1);
-    opacity: 0.8;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-
+  0% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 0.5; }
 }
 
 /* =========================================
@@ -387,68 +55,65 @@ button:hover {
   max-width: 500px;
 
   background: rgba(17, 24, 39, 0.92);
-
   border-radius: 24px;
 
   padding: 50px 40px;
-
   text-align: center;
 
   position: relative;
   z-index: 2;
 
   border: 1px solid rgba(255,255,255,0.06);
-
   backdrop-filter: blur(12px);
 
-  box-shadow:
-    0 0 30px rgba(0,0,0,0.5),
-    0 0 80px rgba(0,0,0,0.25);
+  box-shadow: 0 0 30px rgba(0,0,0,0.5),
+              0 0 80px rgba(0,0,0,0.25);
 
   animation: cardFade 0.7s ease;
 }
 
 @keyframes cardFade {
-
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* =========================================
-   LOGO
+   HOME LOGO
 ========================================= */
 
+.home-logo {
+  font-size: 72px;
+  margin: 0;
+  font-weight: 900;
 
-@keyframes logoFlow {
+  background: linear-gradient(90deg, #ff4d2e, #ff7a18, #ffb347);
+  background-size: 300%;
 
-  0% {
-    background-position: 0%;
-  }
+  background-clip: text;
+  -webkit-background-clip: text;
 
-  100% {
-    background-position: 300%;
-  }
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 
+  animation: logoFlow 6s linear infinite;
+
+  text-shadow: 0 0 25px rgba(255, 94, 98, 0.4);
 }
 
-/* subtitle */
+@keyframes logoFlow {
+  0% { background-position: 0%; }
+  100% { background-position: 300%; }
+}
+
+/* =========================================
+   SUBTITLE
+========================================= */
 
 .subtitle {
   margin-top: 12px;
   margin-bottom: 35px;
-
   color: #94a3b8;
-
   font-size: 16px;
-
   line-height: 1.6;
 }
 
@@ -458,34 +123,24 @@ button:hover {
 
 .main-btn {
   width: 100%;
-
   border: none;
 
   padding: 15px;
-
   border-radius: 14px;
 
-  background: linear-gradient(
-    90deg,
-    #ff4d2e,
-    #ff7a18
-  );
+  background: linear-gradient(90deg, #ff4d2e, #ff7a18);
 
   color: white;
-
   font-size: 16px;
   font-weight: bold;
 
   cursor: pointer;
-
   transition: 0.25s;
 }
 
 .main-btn:hover {
   transform: translateY(-2px) scale(1.02);
-
-  box-shadow:
-    0 0 20px rgba(255, 77, 46, 0.4);
+  box-shadow: 0 0 20px rgba(255, 77, 46, 0.4);
 }
 
 /* =========================================
@@ -494,11 +149,8 @@ button:hover {
 
 .divider {
   margin: 25px 0;
-
   color: #64748b;
-
   font-size: 13px;
-
   letter-spacing: 2px;
 }
 
@@ -513,74 +165,45 @@ button:hover {
 
 .join-box input {
   flex: 1;
-
   background: #1f2937;
-
   border: none;
   outline: none;
 
   color: white;
-
   padding: 14px;
-
   border-radius: 14px;
-
   font-size: 14px;
 }
 
 .join-box input:focus {
-  box-shadow:
-    0 0 0 2px rgba(255, 77, 46, 0.3);
+  box-shadow: 0 0 0 2px rgba(255, 77, 46, 0.3);
 }
 
 .join-box button {
   border: none;
-
-  background: linear-gradient(
-    90deg,
-    #ff4d2e,
-    #ff7a18
-  );
+  background: linear-gradient(90deg, #ff4d2e, #ff7a18);
 
   color: white;
-
   padding: 14px 22px;
-
   border-radius: 14px;
 
   cursor: pointer;
-
   font-weight: bold;
 }
 
 /* =========================================
-   MOBILE
+   NAVBAR
 ========================================= */
-
-@media (max-width: 600px) {
-
-  .home-card {
-    padding: 35px 24px;
-  }
-
-  .logo {
-    font-size: 42px;
-  }
-
-  .join-box {
-    flex-direction: column;
-  }
-
-}
-
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 18px 25px;
   background: rgba(0,0,0,0.3);
   backdrop-filter: blur(10px);
+
   border-bottom: 1px solid rgba(255,255,255,0.08);
   color: white;
 }
@@ -600,6 +223,7 @@ button:hover {
   flex-direction: column;
   align-items: center;
   gap: 18px;
+
   padding: 30px 0;
   background: #0f172a;
   color: white;
@@ -615,21 +239,22 @@ button:hover {
   padding: 10px 18px;
   border: none;
   border-radius: 10px;
+
   background: #ff7b00;
   color: white;
   cursor: pointer;
 }
 
-
-
+/* =========================================
+   FOOTER
+========================================= */
 
 .footer {
-  
   padding: 25px 20px;
   text-align: center;
+
   border-top: 1px solid rgba(255,255,255,0.08);
-  /* background: rgba(255,255,255,0.03); */
-  background:rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.3);
   backdrop-filter: blur(10px);
 }
 
@@ -656,100 +281,9 @@ button:hover {
   font-size: 14px;
 }
 
-
-
-
-
-
-/* room top css  */
-
-.top-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 25px;
-  background: rgba(255,255,255,0.03);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(10px);
-}
-
-.left-top {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.room-logo {
-  color: white;
-  font-size: 24px;
-}
-
-.home-btn {
-  padding: 10px 14px;
-  border: none;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.08);
-  color: white;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.home-btn:hover {
-  background: rgba(255,255,255,0.15);
-}
-
-.top-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.top-actions input {
-  width: 260px;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  background: rgba(255,255,255,0.08);
-  color: white;
-}
-
-.top-actions button {
-  padding: 10px 16px;
-  border: none;
-  border-radius: 10px;
-  background: #ff7b00;
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-
-.room-logo {
-  font-size: 24px;
-  font-weight: bold;
-  cursor: pointer;
-
-  background: linear-gradient(90deg, #ff9a3c, #ff5e62);
-  background-size: 200%;
-
-  background-clip: text;
-  -webkit-background-clip: text;
-
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-
-  animation: roomGlowFlow 3s linear infinite;
-
-  transition: 0.2s ease;
-}
-
-.room-logo:hover {
-  transform: scale(1.03);
-}
-
-
-
-/* pages contact,about,feature */
+/* =========================================
+   PAGES (ABOUT / CONTACT / FEATURES)
+========================================= */
 
 .page {
   min-height: 100vh;
@@ -774,10 +308,7 @@ button:hover {
 
 .features-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(auto-fit, minmax(250px, 1fr));
-
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
 
@@ -786,7 +317,6 @@ button:hover {
   border-radius: 20px;
 
   background: rgba(255,255,255,0.05);
-
   border: 1px solid rgba(255,255,255,0.08);
 
   backdrop-filter: blur(10px);
@@ -801,25 +331,25 @@ button:hover {
   line-height: 1.7;
 }
 
+/* =========================================
+   MOBILE (HOME)
+========================================= */
 
-.home-logo {
-  font-size: 72px;
-  margin: 0;
-  font-weight: 900;
+@media (max-width: 600px) {
 
-  background: linear-gradient(90deg, #ff4d2e, #ff7a18, #ffb347);
-  background-size: 300%;
+  .home-card {
+    padding: 35px 24px;
+  }
 
-  background-clip: text;
-  -webkit-background-clip: text;
+  .logo {
+    font-size: 42px;
+  }
 
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-
-  animation: logoFlow 6s linear infinite;
+  .join-box {
+    flex-direction: column;
+  }
 }
 
 
-.home-logo {
-  text-shadow: 0 0 25px rgba(255, 94, 98, 0.4);
-}
+
+/* =====================this is room code  ===================*/

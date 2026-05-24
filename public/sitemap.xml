@@ -6,4 +6,16 @@
     <loc>https://waveparty.vercel.app/</loc>
   </url>
 
+  <url>
+    <loc>https://waveparty.vercel.app/features</loc>
+  </url>
+
+  <url>
+    <loc>https://waveparty.vercel.app/about</loc>
+  </url>
+
+  <url>
+    <loc>https://waveparty.vercel.app/contact</loc>
+  </url>
+
 </urlset>
