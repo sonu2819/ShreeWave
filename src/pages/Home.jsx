@@ -66,7 +66,7 @@ export default function Home() {
       <div className="home-card">
 
         <h1 className="logo">
-          MyVibeWatch
+          WaveParty
         </h1>
 
         <p className="subtitle">
