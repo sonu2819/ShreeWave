@@ -337,6 +337,13 @@ body {
 
 @media (max-width: 600px) {
 
+  .home-logo {
+  font-size: 42px;
+  line-height: 1.2;
+  text-align: center;
+  padding: 0 10px;
+}
+
   .home-card {
     padding: 35px 24px;
   }
@@ -348,6 +355,7 @@ body {
   .join-box {
     flex-direction: column;
   }
+
 }
 
 
