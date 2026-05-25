@@ -8,7 +8,10 @@ export default function Footer() {
 
         <Link to="/about">About</Link>
         <Link to="/features">Features</Link>
+        <Link to="/faq">FAQ</Link>
         <Link to="/contact">Contact</Link>
+        
+
 
       </div>
 

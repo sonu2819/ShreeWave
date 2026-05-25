@@ -21,8 +21,10 @@ export default function Navbar() {
         <a href="/">Home</a>
         <a href="/features">Features</a>
         <a href="/about">About</a>
+        <a href="/faq">FAQ</a>
         <a href="/contact">Contact</a>
-
+        
+      
      
         </div>
       )}

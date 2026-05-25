@@ -361,3 +361,67 @@ body {
 
 
 /* =====================this is room code  ===================*/
+
+
+/* =========================
+   FAQ PAGE
+========================= */
+
+.faq-section {
+  max-width: 900px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.faq-item {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 22px;
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
+
+.faq-item:hover {
+  transform: translateY(-3px);
+  border-color: #7c4dff;
+  box-shadow: 0 0 20px rgba(124, 77, 255, 0.25);
+}
+
+.faq-item h3 {
+  margin-bottom: 12px;
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.faq-item p {
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .faq-section {
+    padding: 0 15px;
+  }
+
+  .faq-item {
+    padding: 18px;
+  }
+
+  .faq-item h3 {
+    font-size: 18px;
+  }
+
+  .faq-item p {
+    font-size: 15px;
+  }
+
+}
