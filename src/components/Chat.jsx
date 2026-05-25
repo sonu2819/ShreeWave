@@ -98,98 +98,324 @@
 
 
 
+// import { useEffect, useState } from "react";
+// import { db } from "../firebase";
+// import { ref, push, onValue } from "firebase/database";
+
+// // 🔥 generate stable unique name per browser
+// const getUserName = () => {
+//   let name = localStorage.getItem("vibe_username");
+
+//   if (!name) {
+//     name = "User-" + Math.random().toString(36).substring(2, 6);
+//     localStorage.setItem("vibe_username", name);
+//   }
+
+//   return name;
+// };
+
+// export default function Chat({ roomId }) {
+//   const [messages, setMessages] = useState([]);
+//   const [input, setInput] = useState("");
+
+//   const userName = getUserName(); // 🔥 fixed per user
+
+//   useEffect(() => {
+//     if (!roomId) return;
+
+//     const msgRef = ref(db, `rooms/${roomId}/messages`);
+
+//     const unsub = onValue(msgRef, (snap) => {
+//       const data = snap.val();
+
+//       if (!data) {
+//         setMessages([]);
+//         return;
+//       }
+
+//       const list = Object.entries(data).map(([id, msg]) => ({
+//         id,
+//         ...msg,
+//       }));
+
+//       setMessages(list);
+//     });
+
+//     return () => unsub();
+//   }, [roomId]);
+
+//   const sendMessage = (e) => {
+//     e.preventDefault();
+//     if (!input.trim()) return;
+
+//     push(ref(db, `rooms/${roomId}/messages`), {
+//       text: input,
+//       user: userName,
+//       time: Date.now(),
+//     });
+
+//     setInput("");
+//   };
+
+//  return (
+//   <div className="chat-box">
+
+//     <div className="chat-header">
+//       LIVE CHAT
+//     </div>
+
+//     {/* messages */}
+//     <div className="chat-messages">
+
+//       {messages.map((m) => (
+//         <div key={m.id} className="chat-message">
+//           <b>{m.user}:</b> {m.text}
+//         </div>
+//       ))}
+
+//     </div>
+
+//     {/* input */}
+//     <form onSubmit={sendMessage}>
+
+//       <input
+//         value={input}
+//         onChange={(e) => setInput(e.target.value)}
+//         placeholder="message..."
+//       />
+
+//       <button type="submit">
+//         Send
+//       </button>
+
+//     </form>
+
+//   </div>
+// );
+// }
+
+
+
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
-import { ref, push, onValue } from "firebase/database";
+
+import {
+  ref,
+  push,
+  onValue,
+  set,
+  onDisconnect
+} from "firebase/database";
 
 // 🔥 generate stable unique name per browser
 const getUserName = () => {
   let name = localStorage.getItem("vibe_username");
 
   if (!name) {
-    name = "User-" + Math.random().toString(36).substring(2, 6);
-    localStorage.setItem("vibe_username", name);
+    name =
+      "User-" +
+      Math.random()
+        .toString(36)
+        .substring(2, 6);
+
+    localStorage.setItem(
+      "vibe_username",
+      name
+    );
   }
 
   return name;
 };
 
 export default function Chat({ roomId }) {
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState("");
 
-  const userName = getUserName(); // 🔥 fixed per user
+  const [messages, setMessages] =
+    useState([]);
 
+  const [users, setUsers] =
+    useState([]);
+
+  const [input, setInput] =
+    useState("");
+
+  const userName =
+    getUserName();
+
+  // =========================
+  // 🔥 MESSAGES
+  // =========================
   useEffect(() => {
+
     if (!roomId) return;
 
-    const msgRef = ref(db, `rooms/${roomId}/messages`);
+    const msgRef =
+      ref(
+        db,
+        `rooms/${roomId}/messages`
+      );
 
-    const unsub = onValue(msgRef, (snap) => {
+    const unsub =
+      onValue(msgRef, (snap) => {
+
+        const data = snap.val();
+
+        if (!data) {
+          setMessages([]);
+          return;
+        }
+
+        const list =
+          Object.entries(data).map(
+            ([id, msg]) => ({
+              id,
+              ...msg,
+            })
+          );
+
+        setMessages(list);
+      });
+
+    return () => unsub();
+
+  }, [roomId]);
+
+  // =========================
+  // 🔥 ONLINE / OFFLINE
+  // =========================
+  useEffect(() => {
+
+    if (!roomId) return;
+
+    const userRef =
+      ref(
+        db,
+        `rooms/${roomId}/users/${userName}`
+      );
+
+    // 🟢 online
+    set(userRef, {
+      name: userName,
+      online: true,
+    });
+
+    // 🔴 offline
+    onDisconnect(userRef).set({
+      name: userName,
+      online: false,
+    });
+
+    // listen users
+    const usersRef =
+      ref(
+        db,
+        `rooms/${roomId}/users`
+      );
+
+    return onValue(usersRef, (snap) => {
+
       const data = snap.val();
 
       if (!data) {
-        setMessages([]);
+        setUsers([]);
         return;
       }
 
-      const list = Object.entries(data).map(([id, msg]) => ({
-        id,
-        ...msg,
-      }));
+      setUsers(
+        Object.values(data)
+      );
 
-      setMessages(list);
     });
 
-    return () => unsub();
   }, [roomId]);
 
+  // =========================
+  // 🔥 SEND MESSAGE
+  // =========================
   const sendMessage = (e) => {
+
     e.preventDefault();
+
     if (!input.trim()) return;
 
-    push(ref(db, `rooms/${roomId}/messages`), {
-      text: input,
-      user: userName,
-      time: Date.now(),
-    });
+    push(
+      ref(
+        db,
+        `rooms/${roomId}/messages`
+      ),
+      {
+        text: input,
+        user: userName,
+        time: Date.now(),
+      }
+    );
 
     setInput("");
   };
 
- return (
-  <div className="chat-box">
+  return (
 
-    <div className="chat-header">
-      LIVE CHAT
+    <div className="chat-box">
+
+      {/* HEADER */}
+      <div className="chat-header">
+        LIVE CHAT
+      </div>
+
+      {/* USERS */}
+      <div className="chat-users">
+
+        {users.map((u, i) => (
+
+          <span key={i}>
+
+            {u.online
+              ? "🟢"
+              : "🔴"}{" "}
+
+            {u.name}
+
+          </span>
+
+        ))}
+
+      </div>
+
+      {/* MESSAGES */}
+      <div className="chat-messages">
+
+        {messages.map((m) => (
+
+          <div
+            key={m.id}
+            className="chat-message"
+          >
+
+            <b>{m.user}:</b>{" "}
+            {m.text}
+
+          </div>
+
+        ))}
+
+      </div>
+
+      {/* INPUT */}
+      <form onSubmit={sendMessage}>
+
+        <input
+          value={input}
+          onChange={(e) =>
+            setInput(e.target.value)
+          }
+          placeholder="message..."
+        />
+
+        <button type="submit">
+          Send
+        </button>
+
+      </form>
+
     </div>
-
-    {/* messages */}
-    <div className="chat-messages">
-
-      {messages.map((m) => (
-        <div key={m.id} className="chat-message">
-          <b>{m.user}:</b> {m.text}
-        </div>
-      ))}
-
-    </div>
-
-    {/* input */}
-    <form onSubmit={sendMessage}>
-
-      <input
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="message..."
-      />
-
-      <button type="submit">
-        Send
-      </button>
-
-    </form>
-
-  </div>
-);
+  );
 }
