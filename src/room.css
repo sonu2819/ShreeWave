@@ -636,10 +636,10 @@ body {
   }
 
   .room-page {
-      gap: 18px;
+      gap: 100px;
   }
 
   .video-section {
-    margin-bottom: 0;
+    margin-bottom:0;
   }
 }
