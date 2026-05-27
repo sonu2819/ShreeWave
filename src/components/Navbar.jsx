@@ -6,7 +6,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="navbar">
-        <h2 className="room-logo">WaveParty</h2>
+        <h2 className="room-logo">Wave</h2>
 
         <div
           className="menu-icon"
