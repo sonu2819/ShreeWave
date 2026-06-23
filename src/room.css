@@ -606,7 +606,7 @@ body {
   .top-bar {
     flex-direction: column;
     align-items: stretch;
-    gap: 10px;
+    gap: 1px;
     padding: 12px;
   }
 
@@ -643,4 +643,285 @@ body {
   .video-section {
     margin-bottom:0;
   }
+}
+
+
+
+
+
+
+
+/* avtaar css  */
+.user-avatar {
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+
+  background: #161616;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  transition: all 0.3s ease;
+}
+
+/* Neon glow when speaking */
+
+.user-avatar.speaking {
+  animation: glowPulse 1.2s infinite;
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow:
+      0 0 5px #d90429,
+      0 0 10px #d90429,
+      0 0 20px #d90429;
+  }
+
+  50% {
+    box-shadow:
+      0 0 15px #d90429,
+      0 0 35px #d90429,
+      0 0 70px #d90429;
+  }
+
+  100% {
+    box-shadow:
+      0 0 5px #d90429,
+      0 0 10px #d90429,
+      0 0 20px #d90429;
+  }
+}
+
+
+.voice-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* button of voice */
+
+
+
+.chat-right-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 6px 10px;
+}
+
+/* VoiceChat container (the inner div you returned) */
+.chat-right-controls > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(20, 20, 20, 0.6);
+  padding: 6px 10px;
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Buttons */
+.chat-right-controls button {
+  background: #1f1f1f;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s ease;
+}
+
+/* Hover effect */
+.chat-right-controls button:hover {
+  background: #2b2b2b;
+  transform: translateY(-1px);
+}
+
+/* Special style for Leave button (2nd button) */
+.chat-right-controls button:last-child {
+  background: #d90429;
+}
+
+.chat-right-controls button:last-child:hover {
+  background: #b60322;
+}
+
+/* Peer text */
+.chat-right-controls span {
+  color: #aaa;
+}
+
+
+
+.chat-right-controls {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+
+
+
+
+
+
+/* =========================
+   USER ROW FIX
+========================= */
+
+.voice-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90px;
+  flex-shrink: 0;
+}
+
+/* avatar stays fixed */
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+/* =========================
+   CAPSULE WRAPPER (MAIN FIX)
+========================= */
+
+.user-name-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: flex-start;
+
+  width: 100%;
+  height: 22px;
+
+  margin-top: 4px;
+}
+
+/* =========================
+   DOT FIXED POSITION
+========================= */
+
+.status-dot {
+  position: absolute;
+  left: 6px;   /* fixed anchor */
+
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+
+  flex-shrink: 0;
+}
+
+.status-dot.online {
+  background: #00ff66;
+  box-shadow: 0 0 6px #00ff66;
+}
+
+.status-dot.offline {
+ background: #ff2d2d;
+  box-shadow: 0 0 6px #ff2d2d;
+}
+
+/* =========================
+   CAPSULE (NAME AREA)
+========================= */
+
+.name-capsule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  width: 100%;
+  height: 22px;
+
+  padding: 0 10px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  overflow: hidden;
+}
+
+/* =========================
+   TEXT + INPUT (NO SHIFT)
+========================= */
+
+.user-name,
+.editable-name,
+.edit-name-input {
+  font-size: 12px;
+  line-height: 22px;   /* IMPORTANT: locks vertical alignment */
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  max-width: 55px;
+  color: white;
+}
+
+/* input must behave EXACTLY like text */
+.edit-name-input {
+  all: unset;
+
+  font-size: 12px;
+  line-height: 22px;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 55px;
+  text-align: center;
+
+  color: white;
+  caret-color: white;
+}
+
+/* =========================
+   IMPORTANT: center alignment fix
+========================= */
+
+.voice-user * {
+  box-sizing: border-box;
 }
