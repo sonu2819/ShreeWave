@@ -724,68 +724,6 @@ body {
 
 
 
-.chat-right-controls {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 6px 10px;
-}
-
-/* VoiceChat container (the inner div you returned) */
-.chat-right-controls > div {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(20, 20, 20, 0.6);
-  padding: 6px 10px;
-  border-radius: 12px;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* Buttons */
-.chat-right-controls button {
-  background: #1f1f1f;
-  color: #fff;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 13px;
-  transition: 0.2s ease;
-}
-
-/* Hover effect */
-.chat-right-controls button:hover {
-  background: #2b2b2b;
-  transform: translateY(-1px);
-}
-
-/* Special style for Leave button (2nd button) */
-.chat-right-controls button:last-child {
-  background: #d90429;
-}
-
-.chat-right-controls button:last-child:hover {
-  background: #b60322;
-}
-
-/* Peer text */
-.chat-right-controls span {
-  color: #aaa;
-}
-
-
-
-.chat-right-controls {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-
-
 
 
 
@@ -925,3 +863,6 @@ body {
 .voice-user * {
   box-sizing: border-box;
 }
+
+
+

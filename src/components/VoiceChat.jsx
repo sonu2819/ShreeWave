@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { db } from "../firebase";
+import { FiMic, FiMicOff } from "react-icons/fi";
 import { getUserData }
+
 from "../utils/userUtils";
 import {
   ref,
@@ -333,25 +335,23 @@ checkSpeaking();
   };
 
   // ─── UI ────────────────────────────────────────────────────────────────────
-  if (!active) {
-    return <button onClick={startVoice}>🎤 Start</button>;
-  }
-
+  // ─── UI ────────────────────────────────────────────────────────────────────
+if (!active) {
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-      <button onClick={toggleMute}>
-        {muted ? "🔇 Unmute" : "🎙️ Mute"}
-      </button>
-      <button onClick={stopVoice}>📵 Leave</button>
-      {peers.map((p) => (
-        <span
-          key={p.id}
-          title={p.id}
-          style={{ fontSize: "12px", opacity: 0.7 }}
-        >
-          
-        </span>
-      ))}
-    </div>
+    <button onClick={startVoice} title="Start Voice">
+      <FiMic />
+    </button>
   );
+}
+
+return (
+  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+    
+    {/* MUTE / UNMUTE */}
+    <button onClick={toggleMute} title={muted ? "Unmute" : "Mute"}>
+      {muted ? <FiMic /> : <FiMicOff />}
+    </button>
+
+  </div>
+);
 }

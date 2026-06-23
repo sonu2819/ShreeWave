@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { getUserData } from "../utils/userUtils";
 import VoiceChat from "../components/VoiceChat";
 import { db } from "../firebase";
+import { FiSend } from "react-icons/fi";
 
 import {
   ref,
@@ -169,6 +170,7 @@ export default function Chat({ roomId }) {
       {/* HEADER */}
       <div className="chat-header">
         LIVE CHAT
+        
       </div>
 
       {/* USERS */}
@@ -225,11 +227,8 @@ export default function Chat({ roomId }) {
           </div> </div>
         ))}
 
-        {/* VOICE CONTROLS */}
-        <div className="chat-right-controls">
-          <VoiceChat roomId={roomId} />
-        </div>
-
+       
+        
       </div>
 
       {/* MESSAGES */}
@@ -260,10 +259,13 @@ export default function Chat({ roomId }) {
           onChange={(e) => setInput(e.target.value)}
           placeholder="message..."
         />
+<div className="chat-right-controls">
+          <VoiceChat roomId={roomId} />
+        </div>
+        <button className="send-btn">
+  <FiSend />
+</button>
 
-        <button type="submit">
-          Send
-        </button>
 
       </form>
 
