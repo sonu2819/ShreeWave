@@ -5,6 +5,9 @@ import VideoPlayer from "../components/VideoPlayer";
 import Chat from "../components/Chat";
 import "../room.css";
 import VoiceChat from "../components/VoiceChat";
+import { FaShare } from "react-icons/fa";
+import { FaPlay } from "react-icons/fa";
+
 
 export default function Room() {
 
@@ -48,11 +51,20 @@ export default function Room() {
     readOnly
   />
 
-  <button onClick={copyLink}>
+  {/* <button onClick={copyLink}>
     Share
-  </button>
+  </button> */}
+
+  <button className="share-btn" onClick={copyLink}>
+  <FaShare />
+  Share
+</button>
 
 </div>
+
+
+
+
 
 
 </div>
