@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { getUserData } from "../utils/userUtils";
 import VoiceChat from "../components/VoiceChat";
 import { db } from "../firebase";
-import { FiSend } from "react-icons/fi";
+import { FiSend, FiMoreVertical } from "react-icons/fi";
 
 import {
   ref,
@@ -10,7 +10,10 @@ import {
   onValue,
   set,
   onDisconnect,
+  remove,
 } from "firebase/database";
+
+
 
 export default function Chat({ roomId }) {
 
@@ -18,6 +21,7 @@ export default function Chat({ roomId }) {
   const [users, setUsers] = useState([]);
   const [input, setInput] = useState("");
 
+  const [showMenu, setShowMenu] = useState(false);
   const messagesEndRef = useRef(null);
 
   const userData = getUserData();
@@ -135,6 +139,22 @@ export default function Chat({ roomId }) {
     setInput("");
   };
 
+
+
+
+
+
+
+  const clearChat = async () => {
+
+
+  try {
+    await remove(ref(db, `rooms/${roomId}/messages`));
+    setShowMenu(false);
+  } catch (err) {
+    console.error(err);
+  }
+};
   // =========================
   // SAVE USERNAME
   // =========================
@@ -169,9 +189,23 @@ export default function Chat({ roomId }) {
 
       {/* HEADER */}
       <div className="chat-header">
-        LIVE CHAT
-        
+  <div className="chat-title">LIVE CHAT</div>
+
+  <div className="chat-menu">
+    <button
+      className="menu-btn"
+      onClick={() => setShowMenu(!showMenu)}
+    >
+      <FiMoreVertical />
+    </button>
+
+    {showMenu && (
+      <div className="menu-dropdown">
+        <button onClick={clearChat}>Clear Chat</button>
       </div>
+    )}
+  </div>
+</div>
 
       {/* USERS */}
       <div className="chat-users">
