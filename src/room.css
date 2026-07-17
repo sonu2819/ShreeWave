@@ -216,7 +216,8 @@ body {
   display: flex;
   justify-content: center;
 
-  padding: 20px;
+   padding: 0;
+  margin-bottom: 0;
 
   box-sizing: border-box;
 }
